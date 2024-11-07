@@ -32,7 +32,12 @@ prueba3 <- funtion(gen1,gen2,gen3){
     data.frame(
       
     )
+    }else{
+      print("ERROR \n
+            Tu prueba de 3 puntos está mal planeada ya que los individuos tienen genotipos similares")
     }
+  }else{
+    ## Aqui va lo que pasa si el fenotipo no es recesivo
   }
 }
 
