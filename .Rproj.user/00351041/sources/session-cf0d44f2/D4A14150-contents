@@ -1,0 +1,28 @@
+## data frames
+
+# Crear un DataFrame de estudiantes
+estudiantes <- data.frame(
+  nombre = c("Juan", "María", "Pedro", "Laura"),
+  edad = c(20, 22, 21, 23),
+  puntaje = c(85, 90, 88, 92)
+)
+
+# Ver el DataFrame
+print(estudiantes)
+
+### Ejercicios
+
+# Crea un data.frame crecimiento con las siguientes columnas: Cepa, Medio, TasaCrecimiento, Temperatura.
+
+base_de_Datos1 <- data.frame (
+  Cepa = c("k12", "358", "1759", "R89"),
+  Medio = c ("Mc.Conkey", "Lb", "Mc.Conkey", "Salmonella-Shigella"),
+  TasaCrecimeinto = c(sample(500:1500, 4, replace = TRUE)),
+  Temperatura = c(sample (27:35, 4, replace = TRUE))
+)
+View (base_de_Datos1)
+
+# Llena el data.frame con datos aleatorios para 10 cepas en 3 medios diferentes y 4 temperaturas distintas.
+
+# Encuentra la media y la desviación estándar de la tasa de crecimiento por cada medio.
+
