@@ -126,7 +126,7 @@ prueba3puntos.no <- function(gen1,gen2,gen3, dominancia = FALSE){
       ci <- abs(1-cc)
     }else{
       print("ERROR \n
-            Tu prueba de 3 puntos está mal planeada ya que los individuos tienen genotipos similares")
+            Tu prueba de 3 puntos está mal planeada ya que los individuos parentales tienen genotipos similares")
     }
   }else{
     print("ERROR \n
