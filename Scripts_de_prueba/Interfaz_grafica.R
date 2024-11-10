@@ -9,7 +9,7 @@
 # y distancias de mi interes.
 
 
-install.packages("qlt")
+install.packages("qtl")
 library("qtl")
 
                       # funcion que usaremos #
@@ -91,6 +91,61 @@ linkmap <- function(object, chr, chr.space = 2, m.cex = 0.6, interval = FALSE, r
       mt2 = mt # left and right are the same
     }
   }
+  
+  maxlen <- max(c(unlist(lapply(omap, max)),unlist(lapply(mt, max))))
+  names(mt) <- names(map)
+  
+  par(mar=c(0.6 ,1.1 ,2.6 ,1.1))
+  if (ruler) par(mar=c(0.6, 2.1, 2.6, 1.1))
+  
+  plot(0, 0, type = "n", ylim = c(maxlen, minlen), xlim = thelim,
+       xaxs = "i", ylab = "", xlab = "", axes = FALSE, ...)
+  if (ruler) axis(side = 2,  ylim = c(maxlen, minlen))
+  else chrpos = chrpos - 0.3
+  
+  ## Draw chromosomes
+  barwidth = 0.14
+  seglen = 0.06
+  
+  for(i in 1:n.chr) {
+    # for the right side plotting
+    Rstart = chrpos[i] + barwidth # start point for legs on the RIGHT
+    segments(Rstart, map[[i]], Rstart + seglen, map[[i]])
+    segments(Rstart + seglen, map[[i]], Rstart + seglen*3, mt[[i]])
+    segments(Rstart + seglen*3, mt[[i]], Rstart + seglen*4, mt[[i]])
+    alis <- list(x = Rstart + seglen*4 + 0.05, y = mt[[i]], labels = names(map[[i]]), adj = c(0, 0.5), cex = m.cex)
+    do.call("text", c(alis, dots)) # draw right labels
+    # JZ: add distance on the left
+    if (!is.null(interval)){
+      Lstart = chrpos[i] - barwidth # start point for legs on the LEFT
+      segments(Lstart, map2[[i]], Lstart - seglen, map2[[i]])
+      segments(Lstart - seglen, map2[[i]], Lstart - seglen*3, mt2[[i]])
+      segments(Lstart - seglen*3, mt2[[i]], Lstart - seglen*4, mt2[[i]])
+      alisL <- list(x = Lstart - seglen*4 - 0.05, y =  mt2[[i]], labels = format(round(map3[[i]], 1),nsmall=1),adj = c(1, 0.5), cex = m.cex)
+      do.call("text", c(alisL, dots)) # draw left labels
+    }
+    # draw chromosome bar
+    map[[i]] <- omap[[i]]
+    barl <- chrpos[i] - barwidth/2
+    barr <- chrpos[i] + barwidth/2
+    segments(barl, min(map[[i]]), barl, max(map[[i]]), lwd = 3)
+    segments(barr, min(map[[i]]), barr, max(map[[i]]), lwd = 3)
+    segments(barl - barwidth/2, map[[i]], barr + barwidth/2, map[[i]]) # bar ribs
+    # attempt to put curves at ends of chromosomes
+    rs <- seq(0,pi,len=100)
+    r <- (barr - barl)/2 # radius
+    xunit = par("pin")[1]/abs(par("xaxp")[2] - par("xaxp")[1])
+    yunit = par("pin")[2]/abs(par("yaxp")[2] - par("yaxp")[1])
+    xseq <- r*cos(rs) 
+    yseq <- r*sin(rs)*(xunit/yunit)
+    lines(xseq + chrpos[i], min(map[[i]]) - yseq, lwd=3)
+    lines(xseq + chrpos[i], max(map[[i]]) + yseq, lwd=3)
+  }
+  axis(side = 3, at = chrpos, labels = names(map), tick = F, cex.axis=1.5) # side = 1 for bottom, side=3 for top
+  #if(is.na(pmatch("main", names(dots))) & !as.logical(sys.parent()))
+  #  title("Genetic Map")
+  invisible(list(mt = mt, map = map, chrpos = chrpos))
+}
 
   
                       # Generando mapa #  
@@ -110,9 +165,10 @@ Mi_primer_mapa[["1"]][["D1M3"]] <- 20 # Si jalo :p
 linkmap(Mi_primer_mapa, chr = c(1))
 
 # Ahora me gustaria cambiar el nombre de los marcadores
-names(Mi_primer_mapa[["1"]]) <- Genes
 
 Genes <- c("A","B","C")
+
+names(Mi_primer_mapa[["1"]]) <- Genes
 
 Mi_primer_mapa[["1"]][["A"]]
 Mi_primer_mapa[["1"]][["B"]]
