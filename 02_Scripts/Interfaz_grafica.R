@@ -179,4 +179,12 @@ Mi_primer_mapa[["1"]][["C"]]
 linkmap(Mi_primer_mapa, chr = c(1)) # Si funciono c:
 
 # Ahora tratare de conectarlo con los resultados de la funcion de mike.
+frecuencias_fenotipicas # Entiendo que este es el objeto de salida de la funcion de mike
+# entonces trabajaré con el.
+
+# En la función no asginan un gen o alelos determinados, pero entiendo que la manera
+# en la que se refieren a ellos es como gen1, 2 y 3.
+
+# Consideraré que esos son sus nombres y asumiré que el gen 2 es el que esta en medio
+# Posterirmente haré el codigo para obtener la secuencia en centimorgans.
 
