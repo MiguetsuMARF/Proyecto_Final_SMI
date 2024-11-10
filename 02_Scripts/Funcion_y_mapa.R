@@ -45,7 +45,7 @@ names(Nuestro_primer_mapa[["1"]]) <- Genes
 linkmap(Nuestro_primer_mapa, chr = c(1)) -> Mapa_genetico
 
 png("Mapa_genetico.png", width = 400, height = 600)
-plot(1:10, main = "Mapa_genetico")
+linkmap(Nuestro_primer_mapa, chr = c(1)) -> Mapa_genetico
 dev.off()
 
 # futuras ediciones :
