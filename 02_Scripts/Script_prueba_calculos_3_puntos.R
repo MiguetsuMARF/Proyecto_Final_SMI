@@ -273,7 +273,7 @@ if (all((expresion_parental1 == expresion_parental2) == FALSE)){
     )
   }
 }
-frecuencias_fenotipicas
+frecuencias_fenotipicas # INPUT PARA HACER EL MAPA
 
 dz1 <- ((sum(frecuencias_fenotipicas$recombinantes_simples_1)/sum(frecuencias_fenotipicas))+
   (sum(frecuencias_fenotipicas$recombinantes_dobles)/sum(frecuencias_fenotipicas)))*100
