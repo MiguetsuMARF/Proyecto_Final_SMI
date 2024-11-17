@@ -20,12 +20,12 @@ prueba3puntos.no <- function(gen1,gen2,gen3, dominancia = FALSE){
     expresion_parental1 <- c(
       readline(prompt = cat("Hay expresion fenotipica de", gen1,"en el progenitor 1? s/n")),
       readline(prompt = cat("Hay expresion fenotipica de", gen2,"en el progenitor 1? s/n")),
-      readline(prompt = cat("Hay expresion fenotipica de", gen1,"en el progenitor 1? s/n"))
+      readline(prompt = cat("Hay expresion fenotipica de", gen3,"en el progenitor 1? s/n"))
     )
     expresion_parental2 <- c(
       readline(prompt = cat("Hay expresion fenotipica de", gen1,"en el progenitor 2? s/n")),
       readline(prompt = cat("Hay expresion fenotipica de", gen2,"en el progenitor 2? s/n")),
-      readline(prompt = cat("Hay expresion fenotipica de", gen1,"en el progenitor 2? s/n"))
+      readline(prompt = cat("Hay expresion fenotipica de", gen3,"en el progenitor 2? s/n"))
     )
     if (all((expresion_parental1 == expresion_parental2) == FALSE)){
       if (all (posibles_combinaciones[[1]] == expresion_parental1)){
@@ -124,6 +124,12 @@ prueba3puntos.no <- function(gen1,gen2,gen3, dominancia = FALSE){
       cc <- (sum(frecuencias_fenotipicas$recombinantes_dobles)/sum(frecuencias_fenotipicas))/
         ((dz1/100)*(dz2/100))
       ci <- abs(1-cc)
+      resultados <- list(
+        Frecuencias = print(frecuencias_fenotipicas),
+      Distancias_Zona_1 = print(paste("La distancia en zona 1 es:", dz1)),
+      Distancias_Zona_2 = print(paste("La distancia en zona 2 es:", dz2)),
+      Coeficiente_coincidencia = print(paste("El coeficiente de coincidencia es:", cc)),
+      Coeficiente_interferencia = print(paste("El coeficiente de interferencia es:", ci)))
     }else{
       print("ERROR \n
             Tu prueba de 3 puntos está mal planeada ya que los individuos parentales tienen genotipos similares")
@@ -132,12 +138,6 @@ prueba3puntos.no <- function(gen1,gen2,gen3, dominancia = FALSE){
     print("ERROR \n
             Tu prueba de 3 puntos está mal planeada ya que los genes a evaluar deben de tener expresion recesiva, no dominante")## Aqui va lo que pasa si el fenotipo no es recesivo
   }
-  # Aqui vamos a poner todo lo que queremos que de como resultado la funcion
-  frecuencias_fenotipicas
-  dz1
-  dz2
-  cc
-  ci # La base de datos que contiene ordenados los datos de frecuencia
 }
 
 
@@ -307,3 +307,8 @@ options(digits=8)
     ((frecuencias_fenotipicas$recombinantes_dobles[1]+frecuencias_fenotipicas$recombinantes_dobles[2])/sum(frecuencias_fenotipicas))))*
   (((frecuencias_fenotipicas$recombinantes_simples_2[1]+frecuencias_fenotipicas$recombinantes_simples_2[2])/sum(frecuencias_fenotipicas))+
      ((frecuencias_fenotipicas$recombinantes_dobles[1]+frecuencias_fenotipicas$recombinantes_dobles[2])/sum(frecuencias_fenotipicas)))
+
+# ej.1
+
+prueba3puntos.no("EC","CV","CT") -> eccvct
+eccvct
