@@ -16,16 +16,69 @@ prueba3puntos.no <- function(gen1,gen2,gen3, dominancia = FALSE){
     c("s","n","n"),
     c("s","s","n")
   )
+  a <- 0
+  b <- 0
+  c <- 0
+  d <- 0
+  e <- 0
+  f <- 0
   if (dominancia == FALSE){
+    while (a == 0){
+      readline(prompt = cat("Hay expresion fenotipica de", gen1,"en el progenitor 1? s/n")) -> parental1_1
+      if (parental1_1 == "s" | parental1_1 == "n"){
+        a <- a + 1
+      }else{
+        print ("Por favor ingresa un caracter valido (s/n)")
+      }
+    }
+    while (b == 0){
+      readline(prompt = cat("Hay expresion fenotipica de", gen2,"en el progenitor 1? s/n")) -> parental1_2
+      if (parental1_2 == "s" | parental1_2 == "n"){
+        b <- b + 1
+      }else{
+        print ("Por favor ingresa un caracter valido (s/n)")
+      }
+    }
+    while (c == 0){
+      readline(prompt = cat("Hay expresion fenotipica de", gen3,"en el progenitor 1? s/n")) -> parental1_3
+      if (parental1_3 == "s" | parental1_3 == "n"){
+        c <- c + 1
+      }else{
+        print ("Por favor ingresa un caracter valido (s/n)")
+      }
+    }
     expresion_parental1 <- c(
-      readline(prompt = cat("Hay expresion fenotipica de", gen1,"en el progenitor 1? s/n")),
-      readline(prompt = cat("Hay expresion fenotipica de", gen2,"en el progenitor 1? s/n")),
-      readline(prompt = cat("Hay expresion fenotipica de", gen3,"en el progenitor 1? s/n"))
-    )
+      parental1_1,
+      parental1_2,
+      parental1_3)
+    while (d == 0){
+      readline(prompt = cat("Hay expresion fenotipica de", gen1,"en el progenitor 2? s/n")) -> parental2_1
+      if (parental2_1 == "s" | parental2_1 == "n"){
+        d <- d + 1
+      }else{
+        print ("Por favor ingresa un caracter valido (s/n)")
+      }
+    }
+    while (e == 0){
+      readline(prompt = cat("Hay expresion fenotipica de", gen2,"en el progenitor 2? s/n")) -> parental2_2
+      if (parental2_2 == "s" | parental2_2 == "n"){
+        e <- e + 1
+      }else{
+        print ("Por favor ingresa un caracter valido (s/n)")
+      }
+    }
+    while (f == 0){
+      readline(prompt = cat("Hay expresion fenotipica de", gen3,"en el progenitor 2? s/n")) -> parental2_3
+      if (parental2_3 == "s" | parental2_3 == "n"){
+        f <- f + 1
+      }else{
+        print ("Por favor ingresa un caracter valido (s/n)")
+      }
+    }
     expresion_parental2 <- c(
-      readline(prompt = cat("Hay expresion fenotipica de", gen1,"en el progenitor 2? s/n")),
-      readline(prompt = cat("Hay expresion fenotipica de", gen2,"en el progenitor 2? s/n")),
-      readline(prompt = cat("Hay expresion fenotipica de", gen3,"en el progenitor 2? s/n"))
+      parental2_1,
+      parental2_2,
+      parental2_3
     )
     if (all((expresion_parental1 == expresion_parental2) == FALSE)){
       if (all (posibles_combinaciones[[1]] == expresion_parental1)){
@@ -312,3 +365,17 @@ options(digits=8)
 
 prueba3puntos.no("EC","CV","CT") -> eccvct
 eccvct
+i <- 0
+si <- c()
+while (i == 0){
+readline(prompt = cat("Hay expresion fenotipica de", gen1,"en el progenitor 1? s/n")) -> si
+if (si == "s" | si == "n"){
+  i <- i + 1
+}else{
+  print ("Por favor ingresa un caracter valido (s/n)")
+}
+}
+print ("Por favor ingresa un caracter valido (s/n)")
+
+print(paste("hola \n como estas?"))
+cat("hola","\n", "como estas?")

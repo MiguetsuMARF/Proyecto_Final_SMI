@@ -9,16 +9,69 @@ prueba3puntos.no <- function(gen1,gen2,gen3, dominancia = FALSE){
     c("s","n","n"),
     c("s","s","n")
   )
+  a <- 0
+  b <- 0
+  c <- 0
+  d <- 0
+  e <- 0
+  f <- 0
   if (dominancia == FALSE){
+    while (a == 0){
+      readline(prompt = cat("Hay expresion fenotipica de", gen1,"en el progenitor 1? s/n")) -> parental1_1
+      if (parental1_1 == "s" | parental1_1 == "n"){
+        a <- a + 1
+      }else{
+        print ("Por favor ingresa un caracter valido (s/n)")
+      }
+    }
+    while (b == 0){
+      readline(prompt = cat("Hay expresion fenotipica de", gen2,"en el progenitor 1? s/n")) -> parental1_2
+      if (parental1_2 == "s" | parental1_2 == "n"){
+        b <- b + 1
+      }else{
+        print ("Por favor ingresa un caracter valido (s/n)")
+      }
+    }
+    while (c == 0){
+      readline(prompt = cat("Hay expresion fenotipica de", gen3,"en el progenitor 1? s/n")) -> parental1_3
+      if (parental1_3 == "s" | parental1_3 == "n"){
+        c <- c + 1
+      }else{
+        print ("Por favor ingresa un caracter valido (s/n)")
+      }
+    }
     expresion_parental1 <- c(
-      readline(prompt = cat("Hay expresion fenotipica de", gen1,"en el progenitor 1? s/n")),
-      readline(prompt = cat("Hay expresion fenotipica de", gen2,"en el progenitor 1? s/n")),
-      readline(prompt = cat("Hay expresion fenotipica de", gen3,"en el progenitor 1? s/n"))
-    )
+      parental1_1,
+      parental1_2,
+      parental1_3)
+    while (d == 0){
+      readline(prompt = cat("Hay expresion fenotipica de", gen1,"en el progenitor 2? s/n")) -> parental2_1
+      if (parental2_1 == "s" | parental2_1 == "n"){
+        d <- d + 1
+      }else{
+        print ("Por favor ingresa un caracter valido (s/n)")
+      }
+    }
+    while (e == 0){
+      readline(prompt = cat("Hay expresion fenotipica de", gen2,"en el progenitor 2? s/n")) -> parental2_2
+      if (parental2_2 == "s" | parental2_2 == "n"){
+        e <- e + 1
+      }else{
+        print ("Por favor ingresa un caracter valido (s/n)")
+      }
+    }
+    while (f == 0){
+      readline(prompt = cat("Hay expresion fenotipica de", gen3,"en el progenitor 2? s/n")) -> parental2_3
+      if (parental2_3 == "s" | parental2_3 == "n"){
+        f <- f + 1
+      }else{
+        print ("Por favor ingresa un caracter valido (s/n)")
+      }
+    }
     expresion_parental2 <- c(
-      readline(prompt = cat("Hay expresion fenotipica de", gen1,"en el progenitor 2? s/n")),
-      readline(prompt = cat("Hay expresion fenotipica de", gen2,"en el progenitor 2? s/n")),
-      readline(prompt = cat("Hay expresion fenotipica de", gen3,"en el progenitor 2? s/n"))
+      parental2_1,
+      parental2_2,
+      parental2_3
     )
     if (all((expresion_parental1 == expresion_parental2) == FALSE)){
       if (all (posibles_combinaciones[[1]] == expresion_parental1)){
@@ -119,18 +172,17 @@ prueba3puntos.no <- function(gen1,gen2,gen3, dominancia = FALSE){
       ci <- abs(1-cc)
       resultados <- list(
         Frecuencias = print(frecuencias_fenotipicas),
-        Distancias_Zona_1 = dz1,
-        Distancias_Zona_2 = dz2,
-        Coeficiente_coincidencia = cc,
-        Coeficiente_interferencia = ci
-        )
+        Distancias_Zona_1 = print(paste("La distancia en zona 1 es:", dz1)),
+        Distancias_Zona_2 = print(paste("La distancia en zona 2 es:", dz2)),
+        Coeficiente_coincidencia = print(paste("El coeficiente de coincidencia es:", cc)),
+        Coeficiente_interferencia = print(paste("El coeficiente de interferencia es:", ci)))
     }else{
-      print("ERROR \n
-            Tu prueba de 3 puntos está mal planeada ya que los individuos parentales tienen genotipos similares")
+      cat("ERROR", "\n",
+            "Tu prueba de 3 puntos está mal planeada ya que los individuos parentales tienen genotipos similares")
     }
   }else{
-    print("ERROR \n
-            Tu prueba de 3 puntos está mal planeada ya que los genes a evaluar deben de tener expresion recesiva, no dominante")## Aqui va lo que pasa si el fenotipo no es recesivo
+    cat("ERROR", "\n",
+            "Tu prueba de 3 puntos está mal planeada ya que los genes a evaluar deben de tener expresion recesiva, no dominante")## Aqui va lo que pasa si el fenotipo no es recesivo
   }
 }
 
