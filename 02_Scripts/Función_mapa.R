@@ -13,6 +13,9 @@ prueba_distancias <- matrix(
 #Acá es cualquier matriz, de cualquier dimensión, pero tiene que ser cuadrada
 
 Mapa_genetico<- function(x) {
+  if (ncol(x) != nrow(x)) {
+    print("Por favor introduce una matriz cuadrada")
+  } else
   rownames(x)<- LETTERS[1:nrow(x)]
   colnames(x)<- LETTERS[1:ncol(x)]
   
