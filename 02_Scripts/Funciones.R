@@ -119,10 +119,11 @@ prueba3puntos.no <- function(gen1,gen2,gen3, dominancia = FALSE){
       ci <- abs(1-cc)
       resultados <- list(
         Frecuencias = print(frecuencias_fenotipicas),
-        Distancias_Zona_1 = print(paste("La distancia en zona 1 es:", dz1)),
-        Distancias_Zona_2 = print(paste("La distancia en zona 2 es:", dz2)),
-        Coeficiente_coincidencia = print(paste("El coeficiente de coincidencia es:", cc)),
-        Coeficiente_interferencia = print(paste("El coeficiente de interferencia es:", ci)))
+        Distancias_Zona_1 = dz1,
+        Distancias_Zona_2 = dz2,
+        Coeficiente_coincidencia = cc,
+        Coeficiente_interferencia = ci
+        )
     }else{
       print("ERROR \n
             Tu prueba de 3 puntos está mal planeada ya que los individuos parentales tienen genotipos similares")
