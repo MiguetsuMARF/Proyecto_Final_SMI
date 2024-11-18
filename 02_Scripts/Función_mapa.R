@@ -10,10 +10,12 @@ prueba_distancias <- matrix(
   nrow = 6,
   ncol = 6,
   byrow = TRUE)
-rownames(prueba_distancias)<-  c("A", "B", "C", "D", "E", "F")
-colnames(prueba_distancias)<-  c("A", "B", "C", "D", "E", "F")
+#Acá es cualquier matriz, de cualquier dimensión, pero tiene que ser cuadrada
 
 Mapa_genetico<- function(x) {
+  rownames(x)<- LETTERS[1:nrow(x)]
+  colnames(x)<- LETTERS[1:ncol(x)]
+  
   clusters <- hclust(as.dist(x), method = "average")
   
   nuevo_arreglo <- clusters$labels[clusters$order]
@@ -29,7 +31,7 @@ Mapa_genetico<- function(x) {
     pch = 16, xlab = "Distancia (cM)", ylab = "",col = "darkblue",
     axes =FALSE, main = "Mapa genético"
   )
-  text(posiciones, rep(0, length(genetic_positions)), labels = nuevo_arreglo, pos = 3)
+  text(posiciones, rep(0, length(posiciones)), labels = nuevo_arreglo, pos = 3)
   axis(1, at = posiciones, labels = posiciones)
   
 }
