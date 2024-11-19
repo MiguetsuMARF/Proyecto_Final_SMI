@@ -247,10 +247,13 @@ for (i in 1:(length(vector))){
 }
 orden
 vector
-
+Ejercicio1
 ejer <- prueba3puntos(Ejercicio1,"Frecuencias")
 ejer
 ejer2 <- prueba3puntos(Ejercicio1,"Frecuencias", c ("Vermillion","Crossveinless", "Cut"), 3)
+ejer2 <- prueba3puntos(Ejercicio1,"Frecuencias")
+ejer2$Distancias_Zona_1
+x <- c ("Vermillion","Crossveinless", "Cut")
 ejer2
 ejer3 <- prueba3puntos(Ejercicio5, "Frecuencias", c("sc","ec","vg"), 241)
 ejer3

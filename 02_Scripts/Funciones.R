@@ -189,10 +189,7 @@ prueba3puntos.no <- function(gen1,gen2,gen3, dominancia = FALSE){
 prueba3puntos <- function(data, frecuencias, wt = FALSE, fr.wt = FALSE){
   orden <- c ()
   vector <- data[[frecuencias]]
-  for (i in 1:(length(vector))){
-    orden <- c(orden, vector[which(vector == sort(vector)[length(vector)])])
-    vector <- vector[-which(vector == sort(vector)[length(vector)])]
-  }
+  orden <- sort(vector)
   frecuencias_fenotipicas <- data.frame(
     parentales = c (orden[1],orden[2]),
     recombinantes_simples_1 = c (orden[3], orden[4]),
