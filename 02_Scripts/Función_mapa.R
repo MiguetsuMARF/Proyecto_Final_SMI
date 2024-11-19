@@ -16,13 +16,13 @@ Mapa_genetico<- function(x, etiquetas = FALSE) {
   if (ncol(x) != nrow(x)) {
     print("Por favor introduce una matriz cuadrada")
   } else
-    if (etiqueta == FALSE){
+    if (etiquetas == FALSE){
       rownames(x) <- LETTERS[1:nrow(x)]
       colnames(x) <- LETTERS[1:ncol(x)]
     } else {
       
-      rownames(x) <- etiqueta
-      colnames(x) <- etiqueta
+      rownames(x) <- etiquetas
+      colnames(x) <- etiquetas
     }
 
   clusters <- hclust(as.dist(x), method = "average")

@@ -435,7 +435,7 @@ prueba3puntos.inv <- function(Coeficiente_consistencia, Distancia_zona1, Distanc
   }
 }
 
-Mapa_genetico<- function(x, etiquetas = FALSE) {
+as.mapa.genetico<- function(x, etiquetas = FALSE) {
   if (ncol(x) != nrow(x)) {
     print("Por favor introduce una matriz cuadrada")
   } else{
