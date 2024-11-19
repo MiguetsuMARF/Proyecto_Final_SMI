@@ -74,3 +74,5 @@ Ejemplo1_3puntos_inversa$Resultados_estimacion
 ## K = wt, no se expresa, si es K- entonces si hay expresion.
 ## e = mutante, se expresa, si es e- entonces no hay expresion.
 ## CD = wt, no se expresa, si es CD- entonces si hay expresion.
+
+

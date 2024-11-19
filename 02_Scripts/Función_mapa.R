@@ -12,13 +12,19 @@ prueba_distancias <- matrix(
   byrow = TRUE)
 #Acá es cualquier matriz, de cualquier dimensión, pero tiene que ser cuadrada
 
-Mapa_genetico<- function(x) {
+Mapa_genetico<- function(x, etiquetas = FALSE) {
   if (ncol(x) != nrow(x)) {
     print("Por favor introduce una matriz cuadrada")
   } else
-  rownames(x)<- LETTERS[1:nrow(x)]
-  colnames(x)<- LETTERS[1:ncol(x)]
-  
+    if (etiqueta == FALSE){
+      rownames(x) <- LETTERS[1:nrow(x)]
+      colnames(x) <- LETTERS[1:ncol(x)]
+    } else {
+      
+      rownames(x) <- etiqueta
+      colnames(x) <- etiqueta
+    }
+
   clusters <- hclust(as.dist(x), method = "average")
   
   nuevo_arreglo <- clusters$labels[clusters$order]
