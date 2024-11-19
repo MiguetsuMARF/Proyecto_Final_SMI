@@ -76,3 +76,11 @@ Ejemplo1_3puntos_inversa$Resultados_estimacion
 ## CD = wt, no se expresa, si es CD- entonces si hay expresion.
 
 
+######CREACIÓN DE UN MAPA GENÉTICO A PARTIR DE DISTANCIAS#########
+
+#Esta función nos va a servir para generar un mapa genético a partir de una matriz
+#de distancias entre un número determinado de genes, sin importar si estos
+#estan ordenados o no. 
+
+#Lo que tenemos que darle a la matriz es una matriz cuadrada de n dimensiones 
+#
