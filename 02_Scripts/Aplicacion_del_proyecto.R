@@ -94,8 +94,8 @@ Mapa_genetico_p3p <- as.mapa.genetico(Ejemplo1_3puntos_inversa, Genes) # Para ut
 as.mapa.genetico(Ejemplo1_3puntos_inversa) # Así se obseraría la grafica si no utilizamos
 # un vectorque contenga los genes.
 
-png("Mapa_genetico.png", width = 400, height = 600)
-Mapa_genetico_p3
+png("03_Results/Mapa_genetico.png", width = 400, height = 600)
+as.mapa.genetico(Ejemplo1_3puntos_inversa, Genes)
 dev.off()
 
 # La función arroja un mapa genetico con la distancia en centimorgans que hay entre cada gen.
@@ -129,5 +129,6 @@ genes_mapa<- c("G1","G2","G3","G4","K","E","Cd","G5","G6","G7")
 #Ahora, al correr la función con esta matriz y este vector de valores, veremos 
 #nuestro mapa genético
 
-as.mapa.genetico(matriz_mapa_genetico, genes_mapa)
-
+png("03_Results/Mapa_genetico_matrix.png", width = 400, height = 600)
+as.mapa.genetico.matrix(matriz_mapa_genetico, genes_mapa)
+dev.off()
