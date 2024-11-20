@@ -435,14 +435,13 @@ prueba3puntos.inv <- function(Coeficiente_consistencia, Distancia_zona1, Distanc
 as.mapa.genetico<- function(x, etiquetas = FALSE) {
   if (ncol(x) != nrow(x)) {
     print("Por favor introduce una matriz cuadrada")
-  } else{
-    if (etiquetas == FALSE){
-      rownames(x) <- LETTERS[1:nrow(x)]
-      colnames(x) <- LETTERS[1:ncol(x)]
-    } else {
-      
+  } else
+    if (all(etiquetas != FALSE) & nrow(x) == length(etiquetas)){
       rownames(x) <- etiquetas
       colnames(x) <- etiquetas
+    } else {
+      rownames(x) <- LETTERS[1:nrow(x)]
+      colnames(x) <- LETTERS[1:ncol(x)]
     }
   
   clusters <- hclust(as.dist(x), method = "average")
@@ -462,7 +461,7 @@ as.mapa.genetico<- function(x, etiquetas = FALSE) {
   )
   text(posiciones, rep(0, length(posiciones)), labels = nuevo_arreglo, pos = 3)
   axis(1, at = posiciones, labels = posiciones)
-  }  
+  
 }
 
 

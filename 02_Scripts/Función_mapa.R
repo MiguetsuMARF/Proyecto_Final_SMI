@@ -14,7 +14,7 @@ prueba_distancias <- matrix(
 x <- c("ct","v","g","ht","xd","cd")
 #Acá es cualquier matriz, de cualquier dimensión, pero tiene que ser cuadrada
 
-Mapa_genetico<- function(x, etiquetas = FALSE) {
+as.mapa.genetico<- function(x, etiquetas = FALSE) {
   if (ncol(x) != nrow(x)) {
     print("Por favor introduce una matriz cuadrada")
   } else
@@ -45,5 +45,5 @@ Mapa_genetico<- function(x, etiquetas = FALSE) {
   axis(1, at = posiciones, labels = posiciones)
   
 }
-Mapa_genetico(prueba_distancias)
-Mapa_genetico(prueba_distancias, x)
+as.mapa.genetico(prueba_distancias)
+as.mapa.genetico(prueba_distancias, x)

@@ -83,4 +83,22 @@ Ejemplo1_3puntos_inversa$Resultados_estimacion
 #estan ordenados o no. 
 
 #Lo que tenemos que darle a la matriz es una matriz cuadrada de n dimensiones 
-#
+#como la siguiente, que está inspirada en las otras funciones
+
+matriz_mapa_genetico<- matrix( c(0,9,13,15,22,8,10,10,9,11,
+                                 11,0,17,13,13,12,4,7,6,5,
+                                 8,9,0,11,10,11,10,11,21,8,
+                                 7,6,7,0,9,10,11,12,14,6,
+                                 4,1,2,9,0,7,4,7,11,6,
+                                 5,2,5,8,9,0,5,10,10,11,
+                                 9,7,5,1,4,4,0,9,8,6,
+                                 8,9,11,22,7,7,8,0,13,12,
+                                 21,23,22,17,16,12,12,8,0,7,
+                                 5,6,7,8,9,12,10,0,11,0), ncol = 10, byrow = TRUE) 
+#Y ahora creamos un vector para nombrar los genes
+
+genes_mapa<- c("G1","G2","G3","G4","K","E","Cd","G5","G6","G7")
+
+#Ahora, al correr la función con esta matriz y este vector de valores, veremos 
+#nuestro mapa genético
+
