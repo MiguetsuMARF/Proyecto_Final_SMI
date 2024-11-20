@@ -3,9 +3,6 @@
 ######## Ejemplo de Uso de las Funciones ######
 ###############################################
 
-install.packages("ape")
-install.packages("qtl")
-
 # Primero debemos cargar las funciones especificas por medio de la funcion source:
 
 source("02_Scripts/Funciones.R")
@@ -65,7 +62,7 @@ Distancias_Ejemplo2
 Ejemplo1_3puntos_inversa <- prueba3puntos.inv(Ejemplo1_3puntos_base_datos$Coeficiente_coincidencia,
                                               Ejemplo1_3puntos_base_datos$Distancias_Zona_1,
                                               Ejemplo1_3puntos_base_datos$Distancias_Zona_2,
-                                              c("K","e","CD"),
+                                              gen1_parental = "K", gen2_parental = "e", gen3_parental = "CD",
                                               total = 4000, inf.observados = TRUE)
 Ejemplo1_3puntos_inversa
 
@@ -78,12 +75,6 @@ Ejemplo1_3puntos_inversa$Resultados_estimacion
 ## e = mutante, se expresa, si es e- entonces no hay expresion.
 ## CD = wt, no se expresa, si es CD- entonces si hay expresion.
 
-### IVAN
-Genes <- c ("K", "e", "CD")
-as.mapa.genetico(Ejemplo1_3puntos_inversa, Genes)
-
-as.mapa.genetico(Ejemplo1_3puntos_inversa)
-
 
 ######CREACIÓN DE UN MAPA GENÉTICO A PARTIR DE DISTANCIAS#########
 
@@ -93,18 +84,16 @@ as.mapa.genetico(Ejemplo1_3puntos_inversa)
 
 #Lo que tenemos que darle a la matriz es una matriz cuadrada de n dimensiones 
 #como la siguiente, que está inspirada en las otras funciones
-
-matriz_mapa_genetico<- matrix( c(0,9,13,15,22,8,10,10,9,11,
-                                 11,0,17,13,13,12,4,7,6,5,
-                                 8,9,0,11,10,11,10,11,21,8,
-                                 7,6,7,0,9,10,11,12,14,6,
-                                 4,1,2,9,0,7,4,7,11,6,
-                                 5,2,5,8,9,0,5,10,10,11,
-                                 9,7,5,1,4,4,0,9,8,6,
-                                 8,9,11,22,7,7,8,0,13,12,
-                                 21,23,22,17,16,12,12,8,0,7,
-                                 5,6,7,8,9,12,10,0,11,0), ncol = 10, byrow = TRUE) 
-
+matriz_mapa_genetico<- matrix( c(0, 17, 12, 2, 17, 4, 4, 19, 1, 17, 
+                                 17, 0, 5, 17, 18, 20, 19, 10, 10, 5, 
+                                 12, 5, 0, 9, 6, 20, 2, 2, 20, 19, 
+                                 2, 17, 9, 0, 20, 1, 7, 3, 1, 6, 
+                                 17, 18, 6, 20, 0, 7, 2, 14, 3, 9, 
+                                 4, 20, 20, 1, 5, 0, 5, 3, 15, 6, 
+                                 4, 19, 2, 7, 2, 5, 0, 7, 12, 1, 
+                                 19, 10, 2, 3, 14, 3, 7, 0, 4, 11, 
+                                 1, 10, 20, 1, 3, 15, 12, 4, 0, 6, 
+                                 17, 5, 19, 6, 9, 6, 1, 11, 6, 0), ncol = 10, byrow = TRUE) 
 #Y ahora creamos un vector para nombrar los genes
 
 genes_mapa<- c("G1","G2","G3","G4","K","E","Cd","G5","G6","G7")
@@ -112,5 +101,5 @@ genes_mapa<- c("G1","G2","G3","G4","K","E","Cd","G5","G6","G7")
 #Ahora, al correr la función con esta matriz y este vector de valores, veremos 
 #nuestro mapa genético
 
-as.mapa.genetico.matrix(matriz_mapa_genetico, genes_mapa)
+as.mapa.genetico(matriz_mapa_genetico, genes_mapa)
 
