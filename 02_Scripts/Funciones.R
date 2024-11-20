@@ -1,4 +1,4 @@
-library("qtl")
+library(qtl)
 library(ape)
 
 prueba3puntos.no <- function(gen1,gen2,gen3, dominancia = FALSE){
