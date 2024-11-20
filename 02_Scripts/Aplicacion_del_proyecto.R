@@ -66,7 +66,7 @@ Distancias_Ejemplo2
 Ejemplo1_3puntos_inversa <- prueba3puntos.inv(Ejemplo1_3puntos_base_datos$Coeficiente_coincidencia,
                                               Ejemplo1_3puntos_base_datos$Distancias_Zona_1,
                                               Ejemplo1_3puntos_base_datos$Distancias_Zona_2,
-                                              gen1_parental = "K", gen2_parental = "e", gen3_parental = "CD",
+                                              c("k","e","CD"),
                                               total = 4000, inf.observados = TRUE)
 Ejemplo1_3puntos_inversa
 
