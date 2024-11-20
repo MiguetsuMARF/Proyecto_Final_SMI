@@ -3,6 +3,10 @@
 ######## Ejemplo de Uso de las Funciones ######
 ###############################################
 
+# Los paquetes necesarios de instalar para este proyecto son:
+install.packages("qtl")
+install.packages("ape")
+
 # Primero debemos cargar las funciones especificas por medio de la funcion source:
 
 source("02_Scripts/Funciones.R")
