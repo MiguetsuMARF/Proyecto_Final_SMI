@@ -466,50 +466,28 @@ as.mapa.genetico<- function(x, etiquetas = FALSE) {
 
 
 
-prueba_de_tres_puntos <- function(frecuencias_fenotipicas) {
-  frecuencias_fenotipicas$parentales <- as.numeric(frecuencias_fenotipicas$parentales)
-  frecuencias_fenotipicas$recombinantes_simples_1 <- as.numeric(frecuencias_fenotipicas$recombinantes_simples_1)
-  frecuencias_fenotipicas$recombinantes_simples_2 <- as.numeric(frecuencias_fenotipicas$recombinantes_simples_2)
-  frecuencias_fenotipicas$recombinantes_dobles <- as.numeric(frecuencias_fenotipicas$recombinantes_dobles)
+Genes <- c ("k", "e", "cd")
+
+as.prueba3puntos <- function(data, Genes) {
   
-  sum(frecuencias_fenotipicas$recombinantes_simples_1,
-      frecuencias_fenotipicas$recombinantes_dobles) -> numerador_1
-  
-  sum(frecuencias_fenotipicas$recombinantes_simples_2,
-      frecuencias_fenotipicas$recombinantes_dobles) -> numerador_2
-  
-  sum(frecuencias_fenotipicas$parentales,
-      frecuencias_fenotipicas$recombinantes_simples_1,
-      frecuencias_fenotipicas$recombinantes_simples_2,
-      frecuencias_fenotipicas$recombinantes_dobles) -> denominador
-  
-  
-  
-  dist_gen1_gen2 <- (numerador_1/denominador)*100
-  
-  B <- dist_gen1_gen2
-  
-  dist_gen2_gen3 <- (numerador_2/denominador)*100
-  
-  C <- dist_gen2_gen3
-  
-  # Mapa    
   Nuestro_primer_mapa <-sim.map(len = rep(100,1), n.mar = c(3, 1), anchor.tel = FALSE, include.x = FALSE,
                                 sex.sp =FALSE, eq.spacing = FALSE) #Objeto base
   
   names(Nuestro_primer_mapa) <- "Prueba de 3 puntos"
   
-  Genes <- c("Gen 1","Gen 2","Gen 3")
+  # Modificar para que el usuario meta el nombre de los genes
   names(Nuestro_primer_mapa[["Prueba de 3 puntos"]]) <- Genes
   
-  Nuestro_primer_mapa[["Prueba de 3 puntos"]][["Gen 2"]] <- (numerador_1/denominador)*100 # Distancia de A a B
-  Nuestro_primer_mapa[["Prueba de 3 puntos"]][["Gen 3"]] <- ((((numerador_2/denominador)*100))+((numerador_1/denominador)*100))  # Distancia de A a C
+  Nuestro_primer_mapa[["Prueba de 3 puntos"]][[Genes[2]]] <- data$Distancias_Zona_1
+  Nuestro_primer_mapa[["Prueba de 3 puntos"]][[Genes[3]]] <- data$Distancias_Zona_1 +  data$Distancias_Zona_2
   
   linkmap(Nuestro_primer_mapa, chr = "Prueba de 3 puntos", m.cex = 0.8, interval = TRUE) -> Mapa_genetico
   
-  png("Mapa_genetico.png", width = 400, height = 600)
-  linkmap(Nuestro_primer_mapa, chr = "Prueba de 3 puntos")-> Mapa_genetico
-  dev.off()
+  print(Mapa_genetico)
 }
 
-prueba_de_tres_puntos(frecuencias_fenotipicas)
+as.prueba3puntos(ejer, Genes)
+
+png("Mapa_genetico.png", width = 400, height = 600)
+linkmap(Nuestro_primer_mapa, chr = "Prueba de 3 puntos")-> Mapa_genetico
+dev.off()
