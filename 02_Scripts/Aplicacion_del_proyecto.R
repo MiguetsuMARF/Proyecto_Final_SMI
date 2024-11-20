@@ -76,6 +76,34 @@ Ejemplo1_3puntos_inversa$Resultados_estimacion
 ## CD = wt, no se expresa, si es CD- entonces si hay expresion.
 
 
+
+                            ### Mapa Genetico ###
+Genes <- c ("K", "e", "CD") # Para utilizar esta función se recomiend crear un vector
+# que contenga los genes para los que se realizará la prueba. La posición del gen
+# dentro del vector, denota cuales genes estan a las orillas y cual esta en el centro.
+# En caso de no crear un vector, la funcion nombrara a los genes por default A, B y C
+
+
+Mapa_genetico_p3p <- as.mapa.genetico(Ejemplo1_3puntos_inversa, Genes) # Para utilizar la función solo hay
+# que introducir el resultado de las funciones: prueba3puntos.inv, prueba3puntos.no o
+# prueba3puntos.
+# En el seugndo espacio se puede o no introducir un vector que cuente con los genes de 
+# la prueba
+
+
+as.mapa.genetico(Ejemplo1_3puntos_inversa) # Así se obseraría la grafica si no utilizamos
+# un vectorque contenga los genes.
+
+png("Mapa_genetico.png", width = 400, height = 600)
+Mapa_genetico_p3
+dev.off()
+
+# La función arroja un mapa genetico con la distancia en centimorgans que hay entre cada gen.
+# A su vez, esta función esta enriquecida por una función creada por Junli Zhang
+# cuyo github es el siguiente: https://github.com/pinbo
+
+
+
 ######CREACIÓN DE UN MAPA GENÉTICO A PARTIR DE DISTANCIAS#########
 
 #Esta función nos va a servir para generar un mapa genético a partir de una matriz
