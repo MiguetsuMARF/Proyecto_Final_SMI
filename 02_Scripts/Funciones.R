@@ -1,5 +1,3 @@
-install.packages("ape")
-install.packages("qtl")
 library("qtl")
 library(ape)
 
@@ -194,7 +192,7 @@ prueba3puntos.no <- function(gen1,gen2,gen3, dominancia = FALSE){
 prueba3puntos <- function(data, frecuencias, wt = FALSE, fr.wt = FALSE){
   orden <- c ()
   vector <- data[[frecuencias]]
-  orden <- sort(vector)
+  orden <- sort(vector, decreasing = TRUE)
   frecuencias_fenotipicas <- data.frame(
     parentales = c (orden[1],orden[2]),
     recombinantes_simples_1 = c (orden[3], orden[4]),

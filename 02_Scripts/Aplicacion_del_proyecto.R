@@ -3,6 +3,9 @@
 ######## Ejemplo de Uso de las Funciones ######
 ###############################################
 
+install.packages("ape")
+install.packages("qtl")
+
 # Primero debemos cargar las funciones especificas por medio de la funcion source:
 
 source("02_Scripts/Funciones.R")
@@ -62,7 +65,7 @@ Distancias_Ejemplo2
 Ejemplo1_3puntos_inversa <- prueba3puntos.inv(Ejemplo1_3puntos_base_datos$Coeficiente_coincidencia,
                                               Ejemplo1_3puntos_base_datos$Distancias_Zona_1,
                                               Ejemplo1_3puntos_base_datos$Distancias_Zona_2,
-                                              gen1_parental = "K", gen2_parental = "e", gen3_parental = "CD",
+                                              c("K","e","CD"),
                                               total = 4000, inf.observados = TRUE)
 Ejemplo1_3puntos_inversa
 
@@ -75,6 +78,7 @@ Ejemplo1_3puntos_inversa$Resultados_estimacion
 ## e = mutante, se expresa, si es e- entonces no hay expresion.
 ## CD = wt, no se expresa, si es CD- entonces si hay expresion.
 
+### IVAN
 
 ######CREACIÓN DE UN MAPA GENÉTICO A PARTIR DE DISTANCIAS#########
 
@@ -95,10 +99,13 @@ matriz_mapa_genetico<- matrix( c(0,9,13,15,22,8,10,10,9,11,
                                  8,9,11,22,7,7,8,0,13,12,
                                  21,23,22,17,16,12,12,8,0,7,
                                  5,6,7,8,9,12,10,0,11,0), ncol = 10, byrow = TRUE) 
+
 #Y ahora creamos un vector para nombrar los genes
 
 genes_mapa<- c("G1","G2","G3","G4","K","E","Cd","G5","G6","G7")
 
 #Ahora, al correr la función con esta matriz y este vector de valores, veremos 
 #nuestro mapa genético
+
+as.mapa.genetico.matrix(matriz_mapa_genetico, genes_mapa)
 
