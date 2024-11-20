@@ -152,6 +152,7 @@ genes_mapa<- c("G1","G2","G3","G4","K","E","Cd","G5","G6","G7")
 
 #Ahora, al correr la función con esta matriz y este vector de valores, veremos 
 #nuestro mapa genético
+as.mapa.genetico.matrix(matriz_mapa_genetico, genes_mapa)
 
 png("03_Results/Mapa_genetico_matrix.png", width = 400, height = 600)
 as.mapa.genetico.matrix(matriz_mapa_genetico, genes_mapa)
