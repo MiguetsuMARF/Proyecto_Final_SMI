@@ -475,7 +475,7 @@ as.mapa.genetico.matrix <- function(x, etiquetas = FALSE) {
 as.mapa.genetico <- function(data, Genes = c("A","B","C")) {
   
   Nuestro_primer_mapa <-sim.map(len = rep(100,1), n.mar = c(3, 1), anchor.tel = FALSE, include.x = FALSE,
-                                sex.sp =FALSE, eq.spacing = FALSE) #Objeto base
+                                sex.sp =FALSE, eq.spacing = FALSE) #Objeto base creado con qtl
   
   names(Nuestro_primer_mapa) <- "Prueba de 3 puntos"
   
@@ -486,7 +486,7 @@ as.mapa.genetico <- function(data, Genes = c("A","B","C")) {
   Nuestro_primer_mapa[["Prueba de 3 puntos"]][[Genes[3]]] <- data$Distancias_Zona_1 +  data$Distancias_Zona_2
   
   linkmap(Nuestro_primer_mapa, chr = "Prueba de 3 puntos", m.cex = 0.8, interval = TRUE) -> Mapa_genetico
-  
+  # Función creada por Junli Zhang
   print(Mapa_genetico)
 }
 
