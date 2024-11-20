@@ -79,6 +79,11 @@ Ejemplo1_3puntos_inversa$Resultados_estimacion
 ## CD = wt, no se expresa, si es CD- entonces si hay expresion.
 
 ### IVAN
+Genes <- c ("K", "e", "CD")
+as.mapa.genetico(Ejemplo1_3puntos_inversa, Genes)
+
+as.mapa.genetico(Ejemplo1_3puntos_inversa)
+
 
 ######CREACIÓN DE UN MAPA GENÉTICO A PARTIR DE DISTANCIAS#########
 

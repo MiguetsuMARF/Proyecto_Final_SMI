@@ -472,7 +472,7 @@ as.mapa.genetico.matrix <- function(x, etiquetas = FALSE) {
   
 }
 
-as.mapa.genetico <- function(data, Genes) {
+as.mapa.genetico <- function(data, Genes = c("A","B","C")) {
   
   Nuestro_primer_mapa <-sim.map(len = rep(100,1), n.mar = c(3, 1), anchor.tel = FALSE, include.x = FALSE,
                                 sex.sp =FALSE, eq.spacing = FALSE) #Objeto base
