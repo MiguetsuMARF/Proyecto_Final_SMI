@@ -10,19 +10,20 @@ prueba_distancias <- matrix(
   nrow = 6,
   ncol = 6,
   byrow = TRUE)
+
+x <- c("ct","v","g","ht","xd","cd")
 #Acá es cualquier matriz, de cualquier dimensión, pero tiene que ser cuadrada
 
 Mapa_genetico<- function(x, etiquetas = FALSE) {
   if (ncol(x) != nrow(x)) {
     print("Por favor introduce una matriz cuadrada")
   } else
-    if (etiquetas == FALSE){
-      rownames(x) <- LETTERS[1:nrow(x)]
-      colnames(x) <- LETTERS[1:ncol(x)]
-    } else {
-      
+    if (all(etiquetas != FALSE) & nrow(x) == length(etiquetas)){
       rownames(x) <- etiquetas
       colnames(x) <- etiquetas
+    } else {
+      rownames(x) <- LETTERS[1:nrow(x)]
+      colnames(x) <- LETTERS[1:ncol(x)]
     }
 
   clusters <- hclust(as.dist(x), method = "average")
@@ -45,3 +46,4 @@ Mapa_genetico<- function(x, etiquetas = FALSE) {
   
 }
 Mapa_genetico(prueba_distancias)
+Mapa_genetico(prueba_distancias, x)
