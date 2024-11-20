@@ -1,4 +1,4 @@
-library("qtl")
+library(qtl)
 library(ape)
 
 prueba3puntos.no <- function(gen1,gen2,gen3, dominancia = FALSE){
@@ -20,7 +20,7 @@ prueba3puntos.no <- function(gen1,gen2,gen3, dominancia = FALSE){
   f <- 0
   if (dominancia == FALSE){
     while (a == 0){
-      readline(prompt = cat("Hay expresion fenotipica de", gen1,"en el progenitor 1? s/n")) -> parental1_1
+      readline(prompt = cat("Hay expresion fenotipica de", gen1,"en el progenitor 1 (Aquel fenotipo con mayor frecuencia en la progiene)? s/n")) -> parental1_1
       if (parental1_1 == "s" | parental1_1 == "n"){
         a <- a + 1
       }else{
@@ -28,7 +28,7 @@ prueba3puntos.no <- function(gen1,gen2,gen3, dominancia = FALSE){
       }
     }
     while (b == 0){
-      readline(prompt = cat("Hay expresion fenotipica de", gen2,"en el progenitor 1? s/n")) -> parental1_2
+      readline(prompt = cat("Hay expresion fenotipica de", gen2,"en el progenitor 1(Aquel fenotipo con mayor frecuencia en la progiene)? s/n")) -> parental1_2
       if (parental1_2 == "s" | parental1_2 == "n"){
         b <- b + 1
       }else{
@@ -36,7 +36,7 @@ prueba3puntos.no <- function(gen1,gen2,gen3, dominancia = FALSE){
       }
     }
     while (c == 0){
-      readline(prompt = cat("Hay expresion fenotipica de", gen3,"en el progenitor 1? s/n")) -> parental1_3
+      readline(prompt = cat("Hay expresion fenotipica de", gen3,"en el progenitor 1(Aquel fenotipo con mayor frecuencia en la progiene)? s/n")) -> parental1_3
       if (parental1_3 == "s" | parental1_3 == "n"){
         c <- c + 1
       }else{
@@ -48,7 +48,7 @@ prueba3puntos.no <- function(gen1,gen2,gen3, dominancia = FALSE){
       parental1_2,
       parental1_3)
     while (d == 0){
-      readline(prompt = cat("Hay expresion fenotipica de", gen1,"en el progenitor 2? s/n")) -> parental2_1
+      readline(prompt = cat("Hay expresion fenotipica de", gen1,"en el progenitor 2(Aquel fenotipo con la segunda mayor frecuencia en la progiene)? s/n")) -> parental2_1
       if (parental2_1 == "s" | parental2_1 == "n"){
         d <- d + 1
       }else{
@@ -56,7 +56,7 @@ prueba3puntos.no <- function(gen1,gen2,gen3, dominancia = FALSE){
       }
     }
     while (e == 0){
-      readline(prompt = cat("Hay expresion fenotipica de", gen2,"en el progenitor 2? s/n")) -> parental2_2
+      readline(prompt = cat("Hay expresion fenotipica de", gen2,"en el progenitor 2(Aquel fenotipo con la segunda mayor frecuencia en la progiene)? s/n")) -> parental2_2
       if (parental2_2 == "s" | parental2_2 == "n"){
         e <- e + 1
       }else{
@@ -64,7 +64,7 @@ prueba3puntos.no <- function(gen1,gen2,gen3, dominancia = FALSE){
       }
     }
     while (f == 0){
-      readline(prompt = cat("Hay expresion fenotipica de", gen3,"en el progenitor 2? s/n")) -> parental2_3
+      readline(prompt = cat("Hay expresion fenotipica de", gen3,"en el progenitor 2(Aquel fenotipo con la segunda mayor frecuencia en la progiene)? s/n")) -> parental2_3
       if (parental2_3 == "s" | parental2_3 == "n"){
         f <- f + 1
       }else{
@@ -76,94 +76,94 @@ prueba3puntos.no <- function(gen1,gen2,gen3, dominancia = FALSE){
       parental2_2,
       parental2_3
     )
-    if (all((expresion_parental1 == expresion_parental2) == FALSE)){
+    if (all((expresion_parental1 != expresion_parental2))){
       if (all (posibles_combinaciones[[1]] == expresion_parental1)){
         frecuencias_fenotipicas <- data.frame(
           parentales = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de", gen1, gen2,gen3, "?: ")),
                                     readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que no presentan expresion fenotipica de alguno de los genes (wt)?: ")))),
-          recombinantes_simples_1 = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de", gen1, "?: ")),
-                                                 readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de", gen2, gen3, "?: ")))),
-          recombinantes_simples_2 = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de",gen1,gen2, "?: ")),
-                                                 readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de", gen3, "?: ")))),
-          recombinantes_dobles = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de",gen1,gen3, "?: ")),
-                                              readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de", gen2, "?: "))))
+          recombinantes_simples_1 = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de", gen1, "?: ")),
+                                                 readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de", gen2, "y", gen3, "?: ")))),
+          recombinantes_simples_2 = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de",gen1, "y",gen2, "?: ")),
+                                                 readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de", gen3, "?: ")))),
+          recombinantes_dobles = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de",gen1, "y",gen3, "?: ")),
+                                              readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de", gen2, "?: "))))
         )
       }else if(all (posibles_combinaciones[[2]] == expresion_parental1)){
         frecuencias_fenotipicas <- data.frame(
-          parentales = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de",gen2,gen3, "?: ")),
-                                    readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de", gen1, "?: ")))),
+          parentales = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de",gen2, "y",gen3, "?: ")),
+                                    readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de", gen1, "?: ")))),
           recombinantes_simples_1 = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que no presentan expresion fenotipica de alguno de los genes (wt)?: ")),
                                                  readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de", gen1, gen2,gen3, "?: ")))),
-          recombinantes_simples_2 = as.numeric(c(readline (prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de", gen2, "?: ")),
-                                                 readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de",gen1,gen3, "?: ")))),
-          recombinantes_dobles = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de", gen3, "?: ")),
-                                              readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de",gen1,gen2, "?: "))))
+          recombinantes_simples_2 = as.numeric(c(readline (prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de", gen2, "?: ")),
+                                                 readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de",gen1, "y",gen3, "?: ")))),
+          recombinantes_dobles = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de", gen3, "?: ")),
+                                              readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de",gen1, "y",gen2, "?: "))))
         )
       }else if(all (posibles_combinaciones[[3]] == expresion_parental1)){
         frecuencias_fenotipicas <- data.frame(
-          parentales = as.numeric(c(readline (prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de", gen2, "?: ")),
-                                    readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de",gen1,gen3, "?: ")))),
-          recombinantes_simples_1 = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de", gen3, "?: ")),
-                                                 readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de",gen1,gen2, "?: ")))),
-          recombinantes_simples_2 = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de",gen2,gen3, "?: ")),
-                                                 readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de", gen1, "?: ")))),
+          parentales = as.numeric(c(readline (prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de", gen2, "?: ")),
+                                    readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de",gen1, "y",gen3, "?: ")))),
+          recombinantes_simples_1 = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de", gen3, "?: ")),
+                                                 readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de",gen1, "y",gen2, "?: ")))),
+          recombinantes_simples_2 = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de",gen2, "y",gen3, "?: ")),
+                                                 readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de", gen1, "?: ")))),
           recombinantes_dobles = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que no presentan expresion fenotipica de alguno de los genes (wt)?: ")),
                                               readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de", gen1, gen2,gen3, "?: "))))
         )
       }else if(all (posibles_combinaciones[[4]] == expresion_parental1)){
         frecuencias_fenotipicas <- data.frame(
-          parentales = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de", gen3, "?: ")),
-                                    readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de",gen1,gen2, "?: ")))),
-          recombinantes_simples_1 = as.numeric(c(readline (prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de", gen2, "?: ")),
-                                                 readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de",gen1,gen3, "?: ")))),
+          parentales = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de", gen3, "?: ")),
+                                    readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de",gen1, "y",gen2, "?: ")))),
+          recombinantes_simples_1 = as.numeric(c(readline (prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de", gen2, "?: ")),
+                                                 readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de",gen1, "y",gen3, "?: ")))),
           recombinantes_simples_2 = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que no presentan expresion fenotipica de alguno de los genes (wt)?: ")),
                                                  readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de", gen1, gen2,gen3, "?: ")))),
-          recombinantes_dobles = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de",gen2,gen3, "?: ")),
-                                              readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de", gen1, "?: "))))
+          recombinantes_dobles = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de",gen2, "y",gen3, "?: ")),
+                                              readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de", gen1, "?: "))))
         )
       }else if(all (posibles_combinaciones[[5]] == expresion_parental1)){
         frecuencias_fenotipicas <- data.frame(
           parentales = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que no presentan expresion fenotipica de alguno de los genes (wt)?: ")),
                                     readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de", gen1, gen2,gen3, "?: ")))),
-          recombinantes_simples_1 = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de",gen2,gen3, "?: ")),
-                                                 readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de", gen1, "?: ")))),
-          recombinantes_simples_2 = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de", gen3, "?: ")),
-                                                 readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de",gen1,gen2, "?: ")))),
-          recombinantes_dobles = as.numeric(c(readline (prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de", gen2, "?: ")),
-                                              readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de",gen1,gen3, "?: "))))
+          recombinantes_simples_1 = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de",gen2, "y",gen3, "?: ")),
+                                                 readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de", gen1, "?: ")))),
+          recombinantes_simples_2 = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de", gen3, "?: ")),
+                                                 readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de",gen1, "y",gen2, "?: ")))),
+          recombinantes_dobles = as.numeric(c(readline (prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de", gen2, "?: ")),
+                                              readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de",gen1, "y",gen3, "?: "))))
         )
       }else if(all (posibles_combinaciones[[6]] == expresion_parental1)){
         frecuencias_fenotipicas <- data.frame(
-          parentales = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de",gen1,gen3, "?: ")),
-                                    readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de", gen2, "?: ")))),
-          recombinantes_simples_1 = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de",gen1,gen2, "?: ")),
-                                                 readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de", gen3, "?: ")))),
-          recombinantes_simples_2 = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de", gen1, "?: ")),
-                                                 readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de", gen2, gen3, "?: ")))),
+          parentales = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de",gen1, "y",gen3, "?: ")),
+                                    readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de", gen2, "?: ")))),
+          recombinantes_simples_1 = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de",gen1, "y",gen2, "?: ")),
+                                                 readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de", gen3, "?: ")))),
+          recombinantes_simples_2 = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de", gen1, "?: ")),
+                                                 readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de", gen2,  "y",gen3, "?: ")))),
           recombinantes_dobles = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de", gen1, gen2,gen3, "?: ")),
                                               readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que no presentan expresion fenotipica de alguno de los genes (wt)?: "))))
         )
       }else if(all (posibles_combinaciones[[7]] == expresion_parental1)){
         frecuencias_fenotipicas <- data.frame(
-          parentales = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de", gen1, "?: ")),
-                                    readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de", gen2, gen3, "?: ")))),
+          parentales = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de", gen1, "?: ")),
+                                    readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de", gen2,  "y",gen3, "?: ")))),
           recombinantes_simples_1 = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de", gen1, gen2,gen3, "?: ")),
                                                  readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que no presentan expresion fenotipica de alguno de los genes (wt)?: ")))),
-          recombinantes_simples_2 = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de",gen1,gen3, "?: ")),
-                                                 readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de", gen2, "?: ")))),
-          recombinantes_dobles = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de",gen1,gen2, "?: ")),
-                                              readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de", gen3, "?: "))))
+          recombinantes_simples_2 = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de",gen1, "y",gen3, "?: ")),
+                                                 readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de", gen2, "?: ")))),
+          recombinantes_dobles = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de",gen1, "y",gen2, "?: ")),
+                                              readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de", gen3, "?: "))))
         )
       }else if(all (posibles_combinaciones[[8]] == expresion_parental1)){
         frecuencias_fenotipicas <- data.frame(
-          parentales = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de",gen1,gen2, "?: ")),
-                                    readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de", gen3, "?: ")))),
-          recombinantes_simples_1 = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de",gen1,gen3, "?: ")),
-                                                 readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de", gen2, "?: ")))),
+          parentales = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de",gen1, "y",gen2, "?: ")),
+                                    readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de", gen3, "?: ")))),
+          recombinantes_simples_1 = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de",gen1, "y",gen3, "?: ")),
+                                                 readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de", gen2, "?: ")))),
           recombinantes_simples_2 = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de", gen1, gen2,gen3, "?: ")),
                                                  readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que no presentan expresion fenotipica de alguno de los genes (wt)?: ")))),
-          recombinantes_dobles = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de", gen1, "?: ")),
-                                              readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica de", gen2, gen3, "?: "))))
+          recombinantes_dobles = as.numeric(c(readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de", gen1, "?: ")),
+                                              readline(prompt = cat("Cual es la frecuencia de individuos luego de cruza de prueba que presentan expresion fenotipica unicamente de", gen2, "y", gen3, "?: "))))
         )
       }
       dz1 <- ((sum(frecuencias_fenotipicas$recombinantes_simples_1)/sum(frecuencias_fenotipicas))+
